@@ -10,7 +10,8 @@ You are encouraged to use the provided naming convention for ease of review.
 /* create variables to hold the values for modelName and duration */
 
 // INSERT YOUR CODE HERE
-
+var modelName = 'XYZ';
+var duration = 0;
 
 
 
@@ -26,7 +27,17 @@ You are encouraged to use the provided naming convention for ease of review.
 */
 
 // INSERT YOUR CODE HERE
-
+function recalculate() {
+    let total_price;
+    if (modelName == 'XYZ') {
+        total_price = duration * 100;
+    } else if (modelName == 'CPRG') {
+        total_price = duration * 213;
+    } else {
+        total_price = 0;
+    }
+    document.getElementById("calculated-cost").innerHTML = total_price;
+}
 
 
 
@@ -45,8 +56,21 @@ You are encouraged to use the provided naming convention for ease of review.
     // modelButton.addEventListener("click", changeModel);
 
 // INSERT YOUR CODE HERE
+var modelButton = document.getElementById("model-button");
 
-
+function changeModel() {
+    if (modelName == 'XYZ') {
+        modelName = 'CPRG';
+        document.getElementById("model-text").innerHTML = 'Model CPRG';
+    } else if (modelName == 'CPRG') {
+        modelName = 'XYZ';
+        document.getElementById("model-text").innerHTML = 'Model XYZ';
+    } else {
+        document.getElementById("model-text").innerHTML = 'Invalid Value';
+    }
+    recalculate();
+}
+modelButton.addEventListener("click", changeModel);
 
 
 
@@ -64,6 +88,12 @@ You are encouraged to use the provided naming convention for ease of review.
 */
 
 // INSERT YOUR CODE HERE
+var dur_button = document.getElementById("duration-button");
 
-
+function changeDuration() {
+    duration = prompt("The Duration is:");
+    document.getElementById("duration-text").innerHTML = duration;
+    recalculate();
+}
+dur_button.addEventListener("click", changeDuration);
 
